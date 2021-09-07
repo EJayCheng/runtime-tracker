@@ -1,4 +1,4 @@
-import numeral = require("numeral");
+import * as numeral from "numeral";
 
 export interface RuntimeLog {
   name: string;
