@@ -1,18 +1,24 @@
 {
   "name": "runtime-tracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "jest a timer for debug or performance tuning.",
   "main": "dist/index.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "prepublishOnly": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": "https://github.com/EJayCheng/runtime-tracker",
+  "author": "EJay Cheng",
+  "license": "MIT",
   "dependencies": {
     "numeral": "^2.0.6"
   },
   "devDependencies": {
     "@types/numeral": "^2.0.1",
     "typescript": "^4.4.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
   }
 }
