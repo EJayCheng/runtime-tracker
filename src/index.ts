@@ -52,17 +52,23 @@ export class RuntimeTracker {
     };
   }
 
-  public step(lowerName: string): RuntimeTracker {
+  public step(lower: string | RuntimeTracker): RuntimeTracker {
+    if (!lower) {
+      throw new Error("RuntimeTracker name cannot be empty.");
+    }
     if (!!this.endAt) {
       throw new Error(
         "this RuntimeTracker is ended. It will not allow to create sub-RuntimeTracker."
       );
     }
+    let lowerName = lower instanceof RuntimeTracker ? lower.name : lower;
     let existedTracker = this.getLowerByName(lowerName);
     if (!!existedTracker) {
       return existedTracker;
     }
-    let lower = new RuntimeTracker(lowerName, this);
+    if (!(lower instanceof RuntimeTracker)) {
+      lower = new RuntimeTracker(lower);
+    }
     this.lowers.push(lower);
     return lower;
   }
